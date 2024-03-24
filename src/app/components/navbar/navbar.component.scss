@@ -1,0 +1,22 @@
+.navbar {
+  background-color: var(--primary-color);
+
+  img {
+    width: 120px;
+  }
+  .custom-width {
+    max-width: 1200px;
+    padding-inline: 2.5rem;
+  }
+  .active {
+    font-weight: bold;
+  }
+
+  .login {
+    border: 1px solid var(--tertiary-color);
+
+    i {
+      color: var(--secondary-color);
+    }
+  }
+}

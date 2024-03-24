@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-12 my-3">
+    <div class="py-2 bg-c-primary rounded-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex px-3 gap-2">
+          <div>
+            <select
+              class="form-select form-select-sm pointer"
+              aria-label="Small select example"
+              name="category"
+              required
+              [(ngModel)]="selectedCategory"
+              (change)="applyFilter()"
+            >
+              <option selected value="">Categoria</option>
+              <option
+                *ngFor="let category of categories"
+                value="{{ category.name }}"
+              >
+                {{
+                  category.name.charAt(0).toUpperCase() + category.name.slice(1)
+                }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <select
+              class="form-select form-select-sm pointer"
+              name="price"
+              required
+              [(ngModel)]="selectedPrice"
+              (change)="applyFilter()"
+            >
+              <option selected value="">Prezzo</option>
+
+              <option value="DESC">Dal più basso</option>
+              <option value="ASC">Dal più alto</option>
+            </select>
+          </div>
+        </div>
+        <div class="px-3">
+          <input
+            class="search rounded-1"
+            type="search"
+            placeholder="Cerca servizi..."
+            [(ngModel)]="searchInput"
+            (keyup)="searchByInput()"
+            required
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="col-12 col-md-6 col-xl-4 mb-3"
+    *ngFor="let singlePerformance of performances"
+  >
+    <app-performance-card [performance]="singlePerformance">
+    </app-performance-card>
+  </div>
+</div>

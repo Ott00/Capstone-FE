@@ -1,0 +1,36 @@
+<div class="text-center px-5 mb-3">
+  <h5 class="fw-bold">Prenota un Appuntamento</h5>
+</div>
+<form
+  #newAppointment="ngForm"
+  (ngSubmit)="bookAppointment(newAppointment)"
+  class="px-5 py-2 form-size w-100 login-form rounded-3"
+>
+  <div class="mb-3 d-flex justify-content-center row">
+    <div class="col-12">
+      <label for="date" class="form-label">Data</label>
+      <input
+        type="date"
+        name="date"
+        class="form-control"
+        [min]="minDate"
+        required
+        ngModel
+      />
+    </div>
+    <div class="col-12">
+      <label for="time" class="form-label">Data</label>
+      <input type="time" name="time" class="form-control" required ngModel />
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <button
+      type="submit"
+      class="btn btn-outline-dark px-5 fw-bold mt-3"
+      [disabled]="newAppointment.invalid"
+    >
+      Prenota
+    </button>
+  </div>
+</form>

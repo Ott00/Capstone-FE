@@ -1,0 +1,18 @@
+p {
+  font-size: 0.9rem;
+}
+
+.form-container {
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    z-index: 2;
+    padding: -10px;
+    font-size: 2rem;
+    position: absolute;
+    right: 1px;
+  }
+
+  .fa-calendar-days {
+    margin-right: 3px;
+  }
+}

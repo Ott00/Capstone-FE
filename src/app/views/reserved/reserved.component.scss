@@ -1,0 +1,24 @@
+.navbar {
+  height: calc(100vh - 72px);
+  border-inline-end: 1px solid var(--primary-color);
+
+  .active {
+    font-weight: bold;
+    background-color: var(--tertiary-color);
+    color: var(--white);
+  }
+}
+
+.btn {
+  border: 1px solid var(--tertiary-color);
+  &:hover {
+    border-color: var(--tertiary-color);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    height: unset;
+    border-inline-end: none;
+  }
+}

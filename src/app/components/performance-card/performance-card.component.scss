@@ -1,0 +1,17 @@
+.card {
+  transition: box-shadow 0.3s;
+  &:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .clipped-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .card-footer {
+    font-size: 0.9rem;
+  }
+}

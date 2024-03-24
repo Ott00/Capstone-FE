@@ -1,0 +1,249 @@
+<div class="container-fluid">
+  <div class="row">
+    <div
+      class="col-12 py-2 bg-custom rounded-2 mb-3 d-flex justify-content-between align-items-center"
+    >
+      <!-- NAV -->
+      <h5 class="fw-bold">Appuntamenti</h5>
+    </div>
+    <!-- APPOINTMENTS REQUEST -->
+    <div
+      class="col-12 d-flex justify-content-center align-items-center bg-custom rounded-2 p-1 mb-3"
+    >
+      <h6 class="m-0">Appuntamento In Attesa</h6>
+    </div>
+
+    <div class="col-12 d-flex justify-content-center">
+      <ul
+        class="list-group w-100"
+        *ngIf="pendingAppointment; else noAppointments"
+      >
+        <div *ngFor="let a of pendingAppointment">
+          <li
+            *ngIf="a.appointmentStatus.status != 'CONFERMATO'"
+            class="list-group-item border-end-0 border-start-0 rounded-0"
+          >
+            <div class="row d-flex align-items-center justify-content-center">
+              <div
+                class="d-none d-lg-flex col-lg-1 d-flex justify-content-center"
+              >
+                <img
+                  src="{{ a.client.avatar }}"
+                  alt=""
+                  width="50px"
+                  class="img-thumbnail rounded-circle border-0"
+                />
+              </div>
+              <div class="col-12 col-lg-3 d-flex flex-column mb-3 mb-lg-0">
+                <p class="m-0 ms-2 text-truncate">
+                  {{ a.performance.title }}
+                </p>
+                <p class="m-0 ms-2 text-truncate fs-7">
+                  {{ a.performance.description }}
+                </p>
+              </div>
+              <div
+                class="col-6 col-lg-3 d-flex flex-column align-items-lg-center"
+              >
+                <p class="m-0 ms-2 text-truncate">
+                  {{ a.date }}
+                </p>
+                <p class="m-0 ms-2 text-truncate fs-7">
+                  <i class="fa-regular fa-clock me-1"></i
+                  >{{ a.time.substring(0, 5) }}
+                </p>
+              </div>
+              <div class="d-none d-lg-flex col-1 d-flex flex-column">
+                <p class="m-0 ms-2 text-truncate fs-7">
+                  € {{ a.performance.price }}
+                </p>
+              </div>
+              <div
+                class="col-12 col-lg-2 d-flex justify-content-center order-first order-lg-0"
+              >
+                <div class="status-pending text-capitalize">
+                  {{ a.appointmentStatus.status.toLowerCase() }}
+                </div>
+              </div>
+              <div
+                class="col-6 col-lg-2 d-flex justify-content-end justify-content-lg-center"
+              >
+                <button class="btn-custom" (click)="reviewAppointment(a)">
+                  Dettagli
+                </button>
+              </div>
+            </div>
+          </li>
+        </div>
+      </ul>
+      <ng-template #noAppointments>
+        <ul class="list-group w-100">
+          <li
+            class="list-group-item text-center border-end-0 border-start-0 rounded-0"
+          >
+            <p class="m-0">Non ci sono richieste di appuntamenti</p>
+          </li>
+        </ul>
+      </ng-template>
+    </div>
+    <!-- APPOINTMENTS LIST -->
+    <div
+      class="col-12 d-flex justify-content-center align-items-center bg-custom rounded-2 p-1 my-3"
+    >
+      <h6 class="m-0">Appuntamenti Confermati</h6>
+    </div>
+
+    <div class="col-12 d-flex justify-content-center">
+      <ul
+        class="list-group w-100"
+        *ngIf="confirmedAppointment; else noConfirmedAppointments"
+      >
+        <div *ngFor="let a of confirmedAppointment">
+          <li
+            *ngIf="a.appointmentStatus.status == 'CONFERMATO'"
+            class="list-group-item border-end-0 border-start-0 rounded-0"
+          >
+            <div class="row d-flex align-items-center justify-content-center">
+              <div
+                class="d-none d-lg-flex col-lg-1 d-flex justify-content-center"
+              >
+                <img
+                  src="{{ a.client.avatar }}"
+                  alt=""
+                  width="50px"
+                  class="img-thumbnail rounded-circle border-0"
+                />
+              </div>
+              <div class="col-12 col-lg-3 d-flex flex-column mb-3 mb-lg-0">
+                <p class="m-0 ms-2 text-truncate">
+                  {{ a.performance.title }}
+                </p>
+                <p class="m-0 ms-2 text-truncate fs-7">
+                  {{ a.performance.description }}
+                </p>
+              </div>
+              <div
+                class="col-6 col-lg-3 d-flex flex-column align-items-lg-center"
+              >
+                <p class="m-0 ms-2 text-truncate">
+                  {{ a.date }}
+                </p>
+                <p class="m-0 ms-2 text-truncate fs-7">
+                  <i class="fa-regular fa-clock me-1"></i
+                  >{{ a.time.substring(0, 5) }}
+                </p>
+              </div>
+              <div class="d-none d-lg-flex col-1 d-flex flex-column">
+                <p class="m-0 ms-2 text-truncate fs-7">
+                  € {{ a.performance.price }}
+                </p>
+              </div>
+              <div
+                class="col-12 col-lg-2 d-flex justify-content-center order-first order-lg-0"
+              >
+                <div class="status-confirmed text-capitalize">
+                  {{ a.appointmentStatus.status.toLowerCase() }}
+                </div>
+              </div>
+              <div
+                class="col-6 col-lg-2 d-flex justify-content-end justify-content-lg-center"
+              >
+                <button class="btn-custom" (click)="reviewAppointment(a)">
+                  Dettagli
+                </button>
+              </div>
+            </div>
+          </li>
+        </div>
+      </ul>
+      <ng-template #noConfirmedAppointments>
+        <ul class="list-group w-100">
+          <li
+            class="list-group-item text-center border-end-0 border-start-0 rounded-0"
+          >
+            <p class="m-0">Non ci sono appuntamenti confermati</p>
+          </li>
+        </ul>
+      </ng-template>
+    </div>
+    <div
+      class="col-12 d-flex justify-content-center align-items-center bg-custom rounded-2 p-1 my-3"
+    >
+      <h6 class="m-0">Appuntamenti Declinati</h6>
+    </div>
+
+    <div class="col-12 d-flex justify-content-center">
+      <ul
+        class="list-group w-100"
+        *ngIf="declinedAppointment; else noDeclinedAppointments"
+      >
+        <div *ngFor="let a of declinedAppointment">
+          <li
+            *ngIf="a.appointmentStatus.status == 'DECLINATO'"
+            class="list-group-item border-end-0 border-start-0 rounded-0"
+          >
+            <div class="row d-flex align-items-center justify-content-center">
+              <div
+                class="d-none d-lg-flex col-lg-1 d-flex justify-content-center"
+              >
+                <img
+                  src="{{ a.client.avatar }}"
+                  alt=""
+                  width="50px"
+                  class="img-thumbnail rounded-circle border-0"
+                />
+              </div>
+              <div class="col-12 col-lg-3 d-flex flex-column mb-3 mb-lg-0">
+                <p class="m-0 ms-2 text-truncate">
+                  {{ a.performance.title }}
+                </p>
+                <p class="m-0 ms-2 text-truncate fs-7">
+                  {{ a.performance.description }}
+                </p>
+              </div>
+              <div
+                class="col-6 col-lg-3 d-flex flex-column align-items-lg-center"
+              >
+                <p class="m-0 ms-2 text-truncate">
+                  {{ a.date }}
+                </p>
+                <p class="m-0 ms-2 text-truncate fs-7">
+                  <i class="fa-regular fa-clock me-1"></i
+                  >{{ a.time.substring(0, 5) }}
+                </p>
+              </div>
+              <div class="d-none d-lg-flex col-1 d-flex flex-column">
+                <p class="m-0 ms-2 text-truncate fs-7">
+                  € {{ a.performance.price }}
+                </p>
+              </div>
+              <div
+                class="col-12 col-lg-2 d-flex justify-content-center order-first order-lg-0"
+              >
+                <div class="status-declined text-capitalize">
+                  {{ a.appointmentStatus.status.toLowerCase() }}
+                </div>
+              </div>
+              <div
+                class="col-6 col-lg-2 d-flex justify-content-end justify-content-lg-center"
+              >
+                <button class="btn-custom" (click)="reviewAppointment(a)">
+                  Dettagli
+                </button>
+              </div>
+            </div>
+          </li>
+        </div>
+      </ul>
+      <ng-template #noDeclinedAppointments>
+        <ul class="list-group w-100">
+          <li
+            class="list-group-item text-center border-end-0 border-start-0 rounded-0"
+          >
+            <p class="m-0">Non ci sono appuntamenti declinati</p>
+          </li>
+        </ul>
+      </ng-template>
+    </div>
+  </div>
+</div>

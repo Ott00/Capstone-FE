@@ -1,0 +1,45 @@
+h1 {
+  span {
+    color: var(--secondary-color);
+  }
+}
+
+.hero-bg {
+  background-color: var(--primary-color);
+}
+
+.hero {
+  background-color: var(--primary-color);
+  max-width: 1200px;
+
+  .btn-hero {
+    background-color: var(--secondary-color);
+
+    &:hover {
+      background-color: var(--text-color);
+    }
+  }
+}
+
+.under-hero {
+  background-color: var(--white);
+
+  i {
+    color: black;
+    font-size: 1.8rem;
+
+    i:first-child {
+      font-size: 0.8rem;
+      top: 0px;
+      right: -0.9rem;
+      color: var(--secondary-color);
+    }
+    i:nth-child(2) {
+      font-size: 1.3rem;
+      top: 5px;
+      left: -5px;
+      opacity: 0.3;
+      color: var(--secondary-color);
+    }
+  }
+}

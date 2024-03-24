@@ -1,0 +1,26 @@
+<div class="card border-0 h-100">
+  <div class="card-body">
+    <div class="d-flex justify-content-center">
+      <img
+        width="100px"
+        class="img-thumbnail border-0 bg-transparent rounded-4"
+        src="{{ user.avatar }}"
+        alt=""
+      />
+    </div>
+    <div class="row">
+      <h4 class="col-12 text-center card-title text-truncate">
+        {{ user.name }} {{ user.surname }}
+      </h4>
+      <p
+        class="col-12 card-text d-flex justify-content-center align-items-center gap-2"
+      >
+        <i class="fa-solid fa-briefcase"></i>
+        {{ user.role | lowercase }}
+      </p>
+      <div class="col-12 d-flex justify-content-center">
+        <button class="btn btn-custom rounded-3 py-1 px-4">Contatta</button>
+      </div>
+    </div>
+  </div>
+</div>

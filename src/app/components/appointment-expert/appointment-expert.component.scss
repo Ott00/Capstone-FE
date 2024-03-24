@@ -1,0 +1,33 @@
+.fs-7 {
+  font-size: 0.8rem;
+}
+
+.status-pending {
+  background-color: #ffe4d3;
+  color: #ff9971;
+  width: fit-content;
+  padding: 0.1rem 0.5rem;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.status-confirmed {
+  background-color: #d5ffeb;
+  color: #317f4c;
+  width: fit-content;
+  padding: 0.1rem 0.5rem;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.status-declined {
+  background-color: #ffd5d5;
+  color: #7f3131;
+  width: fit-content;
+  padding: 0.1rem 0.5rem;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}

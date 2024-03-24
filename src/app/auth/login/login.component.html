@@ -1,0 +1,104 @@
+<div class="row py-5">
+  <div class="col-12 d-flex flex-column align-items-center">
+    <div class="mb-4">
+      <h2 class="px-5 text-center fw-bold">
+        Felici di rivederti<span class="text-custom">!</span>
+      </h2>
+      <p class="m-0 text-center fs-6">
+        Non sei registrato?
+        <span class="pointer fw-bold" (click)="goRegister()">Registrati</span>
+      </p>
+    </div>
+    <form
+      #loginForm="ngForm"
+      (ngSubmit)="login(loginForm)"
+      class="p-5 form-size w-100 login-form rounded-3"
+    >
+      <div class="mb-3">
+        <label for="email" class="form-label text-white">Email</label>
+        <div class="position-relative">
+          <div class="position-absolute end-0 mt-1 me-2 z-1">
+            <i class="fa-solid fa-envelope text-custom"></i>
+          </div>
+          <input
+            type="email"
+            class="form-control border-0"
+            id="email"
+            name="email"
+            ngModel
+            email
+            required
+            [ngClass]="{
+                        'shake-horizontal':
+                        loginForm.controls['email'] && loginForm.controls['email'].errors?.['email'] && loginForm.controls['email'].touched
+                      }"
+          />
+          <div
+            *ngIf="loginForm.controls['email'] && loginForm.controls['email'].errors?.['email'] && loginForm.controls['email'].touched"
+          >
+            <span class="text-danger opacity-75">Email is not valid!</span>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label text-white">Password</label>
+        <div class="position-relative">
+          <div class="position-absolute end-0 mt-1 me-2 z-1">
+            <button
+              type="button"
+              class="btn p-0 m-0"
+              (mousedown)="showPasswordOrNot()"
+              [class.hide]="showPassword"
+            >
+              <i class="fa-solid fa-eye text-custom"></i>
+            </button>
+            <button
+              type="button"
+              class="btn p-0 m-0"
+              (mouseup)="showPasswordOrNot()"
+              [class.hide]="!showPassword"
+            >
+              <i class="fa-solid fa-eye-slash text-custom"></i>
+            </button>
+          </div>
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            class="form-control border-0"
+            id="password"
+            name="password"
+            [minlength]="8"
+            ngModel
+            required
+            [ngClass]="{
+              'shake-horizontal':
+                loginForm.controls['password'] &&
+                loginForm.controls['password'].touched &&
+                loginForm.controls['password'].invalid
+            }"
+          />
+          <div
+            *ngIf="
+              loginForm.controls['password'] &&
+              loginForm.controls['password'].touched &&
+              loginForm.controls['password'].invalid
+            "
+          >
+            <span class="text-danger opacity-75">
+              Password must be at least 8 characters long!
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <button
+          type="submit"
+          [disabled]="loginForm.invalid"
+          class="btn btn-outline-light px-5 fw-bold"
+        >
+          Accedi
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

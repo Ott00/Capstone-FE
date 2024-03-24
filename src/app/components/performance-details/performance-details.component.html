@@ -1,0 +1,67 @@
+<div class="row" *ngIf="freelancer">
+  <div class="col-12 col-md-4 p-4 order-0 order-md-1">
+    <div class="position-sticky">
+      <div
+        class="rounded-2 border border-3 mb-3 py-3 text-center"
+        *ngIf="user.role.toLocaleLowerCase() === 'client'"
+      >
+        <button
+          class="btn btn-dark fw-bold"
+          (click)="bookAppointment(user, performance)"
+        >
+          Prenota Appuntamento
+        </button>
+      </div>
+
+      <div class="border border-3 rounded-2 py-3 pointer">
+        <div>
+          <h6 class="text-center">Scopri il Professionista!</h6>
+          <div
+            class="d-flex flex-column gap-2 justify-content-center align-items-center my-4"
+          >
+            <img
+              src="{{ freelancer.avatar }}"
+              width="60px"
+              class="rounded-3"
+              alt=""
+            />
+            <p class="m-0">
+              {{ freelancer.name }}
+              {{ freelancer.surname }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-8 p-4 order-1 order-md-0">
+    <div>
+      <img
+        src="{{ performance.image }}"
+        alt=""
+        style="max-height: 300px; min-width: 100%; object-fit: cover"
+        class="rounded-2"
+      />
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <h2 class="fw-bold fs-4 my-3 w-75 text-truncate">
+        {{ performance.title }}
+      </h2>
+      <div class="badge text-bg-dark">{{ performance.price }}€</div>
+    </div>
+    <p>
+      {{ performance.description }}
+    </p>
+    <div class="d-flex flex-wrap column-gap-5 my-2">
+      <div class="text-capitalize d-flex align-items-baseline gap-1">
+        <i class="fa-solid fa-tag"></i>
+        {{ performance.category.name }}
+      </div>
+
+      <div>
+        <i class="fa-solid fa-location-dot"></i>
+        {{ performance.location }}
+      </div>
+    </div>
+  </div>
+</div>

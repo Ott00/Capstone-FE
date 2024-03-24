@@ -1,0 +1,26 @@
+h1 {
+  span {
+    color: var(--secondary-color);
+  }
+}
+
+.hero-bg {
+  background-color: var(--primary-color);
+}
+
+.hero {
+  background-color: var(--primary-color);
+  max-width: 1200px;
+
+  .btn-hero {
+    background-color: var(--secondary-color);
+
+    &:hover {
+      background-color: var(--text-color);
+    }
+  }
+}
+
+.under-hero {
+  max-width: 1200px;
+}

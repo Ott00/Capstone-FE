@@ -1,0 +1,40 @@
+<div class="row" *ngIf="user">
+  <div class="navbar col-12 col-md-2 d-flex flex-column">
+    <div class="d-flex flex-md-column gap-2 px-2 w-100">
+      <button
+        class="btn"
+        [routerLink]="['./profile']"
+        routerLinkActive="active"
+      >
+        Profilo
+      </button>
+      <button
+        *ngIf="user.role.toLocaleLowerCase() === 'freelancer'"
+        class="btn"
+        [routerLink]="['./services']"
+        routerLinkActive="active"
+      >
+        Servizi
+      </button>
+      <button
+        *ngIf="user.role.toLocaleLowerCase() === 'freelancer'"
+        class="btn"
+        [routerLink]="['./expertAppointments']"
+        routerLinkActive="active"
+      >
+        Appuntamenti
+      </button>
+      <button
+        *ngIf="user.role.toLocaleLowerCase() === 'client'"
+        class="btn"
+        [routerLink]="['./clientAppointments']"
+        routerLinkActive="active"
+      >
+        Appuntamenti
+      </button>
+    </div>
+  </div>
+  <div class="col-12 col-md-10 px-2 my-2">
+    <router-outlet></router-outlet>
+  </div>
+</div>

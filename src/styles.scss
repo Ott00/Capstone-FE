@@ -1,1 +1,103 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$Capstone-FE-primary: mat.define-palette(mat.$indigo-palette);
+$Capstone-FE-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$Capstone-FE-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$Capstone-FE-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $Capstone-FE-primary,
+      accent: $Capstone-FE-accent,
+      warn: $Capstone-FE-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($Capstone-FE-theme);
+
 /* You can add global styles to this file, and also import other style files */
+@import "bootstrap/scss/bootstrap";
+
+:root {
+  --primary-color: #f0f9fc;
+  --secondary-color: #3e8ef6;
+  --tertiary-color: #344055;
+  --accent-color: #9fc6fa;
+  --text-color: #121d36;
+  --background-color: #f0f9fc;
+  --white: #fff;
+}
+
+.form-select:focus {
+  box-shadow: none;
+  border-color: var(--secondary-color);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.btn-custom {
+  background-color: white;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 2px solid var(--text-color);
+  border-radius: 5px;
+  padding: 0.2rem 0.8rem;
+
+  &:hover {
+    background-color: var(--text-color);
+    color: white;
+  }
+}
+
+body {
+  color: var(--text-color);
+}
+
+.bg {
+  min-height: calc(100vh - 72px);
+}
+
+.bg-custom {
+  background-color: var(--tertiary-color);
+  color: white;
+}
+
+.bg-c-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.hide {
+  display: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

@@ -1,0 +1,42 @@
+<div
+  class="card position-relative pointer h-100"
+  [routerLink]="['/services', performance.id]"
+>
+  <div class="position-absolute end-0 top-0 m-2">
+    <div class="badge rounded-2 bg-dark">
+      {{ performance.category.name }}
+      <i class="fa-solid fa-tag"></i>
+    </div>
+  </div>
+  <img
+    src="{{ performance.image }}"
+    class="card-img-top"
+    alt="..."
+    style="max-height: 100px; object-fit: cover"
+  />
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-baseline">
+      <h5 class="card-title text-truncate w-50">
+        {{ performance.title }}
+      </h5>
+      <div class="d-flex align-items-center">
+        {{ performance.freelancer.name }}
+        {{ performance.freelancer.surname.charAt(0) }}.
+        <img
+          width="35px"
+          src="{{ performance.freelancer.avatar }}"
+          class="img-thumbnail rounded-circle border-0"
+          alt=""
+        />
+      </div>
+    </div>
+    <p class="card-text clipped-text my-2">{{ performance.description }}</p>
+  </div>
+  <div class="d-flex justify-content-between card-footer border-0">
+    <div>
+      <i class="fa-solid fa-location-dot"></i>
+      {{ performance.location }}
+    </div>
+    <div>{{ performance.price }}€</div>
+  </div>
+</div>
