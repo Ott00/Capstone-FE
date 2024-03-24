@@ -11,9 +11,9 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AppointmentExpertComponent implements OnInit {
   appointments!: Appointment[];
-  pendingAppointment!: Appointment[];
-  confirmedAppointment!: Appointment[];
-  declinedAppointment!: Appointment[];
+  pendingAppointment: Appointment[] = [];
+  confirmedAppointment: Appointment[] = [];
+  declinedAppointment: Appointment[] = [];
   dialog: MatDialog;
   isFreelancer: boolean = true;
 

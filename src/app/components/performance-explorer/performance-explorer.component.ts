@@ -57,8 +57,6 @@ export class PerformanceExplorerComponent implements OnInit {
   }
 
   searchByInput() {
-    console.log('Sto cercando');
-
     this.performancesSrv
       .searchPerformanceByInput(this.searchInput)
       .subscribe((response) => {

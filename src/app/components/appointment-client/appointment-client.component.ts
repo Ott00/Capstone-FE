@@ -11,9 +11,9 @@ import { AppointmentRequestComponent } from '../dialog/appointment-request/appoi
 })
 export class AppointmentClientComponent implements OnInit {
   appointments!: Appointment[];
-  pendingAppointment!: Appointment[];
-  confirmedAppointment!: Appointment[];
-  declinedAppointment!: Appointment[];
+  pendingAppointment: Appointment[] = [];
+  confirmedAppointment: Appointment[] = [];
+  declinedAppointment: Appointment[] = [];
   dialog: MatDialog;
 
   constructor(
