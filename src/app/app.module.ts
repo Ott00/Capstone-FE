@@ -35,6 +35,7 @@ import { RoleGuard } from './auth/guard/role.guard';
 import { AppointmentExpertComponent } from './components/appointment-expert/appointment-expert.component';
 import { AppointmentRequestComponent } from './components/dialog/appointment-request/appointment-request.component';
 import { AppointmentClientComponent } from './components/appointment-client/appointment-client.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const routes: Route[] = [
   {
@@ -137,6 +138,7 @@ const routes: Route[] = [
     AppointmentExpertComponent,
     AppointmentRequestComponent,
     AppointmentClientComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,6 +16,11 @@ export class NewServiceComponent implements OnInit {
   dialog: MatDialog;
   file!: File;
   urlImage!: ResponseImage;
+
+  maxLength: number = 255;
+  maxLengthRemaining: number = 255;
+  description: string = '';
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private reservedSrv: ReservedService,

@@ -14,6 +14,10 @@ export class EditServiceComponent implements OnInit {
   categories: Category[];
   dialog: MatDialog;
   service: Service;
+
+  maxLength: number = 255;
+  maxLengthRemaining: number = 255;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private reservedSrv: ReservedService
