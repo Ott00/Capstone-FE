@@ -1,0 +1,10 @@
+<div class="d-flex flex-column align-items-center justify-content-center p-3">
+  <h5>Eliminare "{{ title }}"?</h5>
+  <p class="mt-2 p-3 text-decoration-underline">L'azione è irreversibile</p>
+  <div class="d-flex gap-4">
+    <button class="btn btn-custom p-2" mat-dialog-close>Annulla</button>
+    <button class="btn btn-custom p-2" (click)="deleteService()">
+      Conferma
+    </button>
+  </div>
+</div>

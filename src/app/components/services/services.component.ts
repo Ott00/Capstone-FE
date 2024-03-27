@@ -5,6 +5,7 @@ import { ReservedService } from 'src/app/services/reserved.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { NewServiceComponent } from '../dialog/new-service/new-service.component';
 import { EditServiceComponent } from '../dialog/edit-service/edit-service.component';
+import { DeleteElementComponent } from '../dialog/delete-element/delete-element.component';
 
 @Component({
   selector: 'app-services',
@@ -15,12 +16,15 @@ export class ServicesComponent implements OnInit {
   categories: Category[] = [];
   services: Service[] = [];
   dialog: MatDialog;
+  dialogDelete: MatDialog;
   editMode: boolean = false;
   constructor(
     private reservedSrv: ReservedService,
-    private dialogRef: MatDialog
+    private dialogRef: MatDialog,
+    private dialogRefDelete: MatDialog
   ) {
     this.dialog = dialogRef;
+    this.dialogDelete = dialogRefDelete;
   }
 
   ngOnInit(): void {
@@ -34,8 +38,11 @@ export class ServicesComponent implements OnInit {
     });
   }
 
-  deleteService(id: string) {
-    this.reservedSrv.deleteService(id).subscribe(() => {
+  deleteService(title: string, id: string) {
+    const dialog = this.dialogDelete.open(DeleteElementComponent, {
+      data: { id: id, title: title, dialog: this.dialogDelete },
+    });
+    dialog.afterClosed().subscribe(() => {
       this.getServices();
     });
   }

@@ -1,0 +1,7 @@
+.btn-custom {
+  &:last-of-type {
+    &:hover {
+      background: red;
+    }
+  }
+}
