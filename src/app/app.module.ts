@@ -25,6 +25,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { NewServiceComponent } from './components/dialog/new-service/new-service.component';
 import { EditServiceComponent } from './components/dialog/edit-service/edit-service.component';
@@ -157,6 +159,8 @@ const routes: Route[] = [
     MatProgressSpinnerModule,
     MatTabsModule,
     MatButtonModule,
+    MatDividerModule,
+    MatSnackBarModule,
   ],
 
   providers: [

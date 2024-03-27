@@ -1,0 +1,13 @@
+.fs-7 {
+  font-size: 1rem;
+}
+
+.custom-top {
+  top: 150px;
+}
+
+.btn-custom {
+  &:hover {
+    border: 1px solid white;
+  }
+}

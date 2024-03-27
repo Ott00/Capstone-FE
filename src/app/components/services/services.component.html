@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div
-      class="col-12 d-flex align-items-center bg-dark rounded-2 p-2 mb-3 gap-2"
+      class="col-12 d-flex align-items-center bg-white rounded-2 p-2 mb-3 gap-2"
     >
       <button class="btn btn-custom py-2" (click)="addService(categories)">
         <i class="fa-solid fa-circle-plus"></i> Aggiungi Servizio
@@ -12,68 +12,30 @@
       </button>
     </div>
     <!-- SERVICE LIST -->
-    <div class="col-12 rounded-2 p-0">
-      <div class="row d-flex">
-        <div
-          *ngFor="let service of services"
-          class="col-12 col-md-6 col-xl-4 my-2"
-        >
-          <div class="bg-body-secondary rounded-2 p-3 h-100">
-            <div>
-              <img
-                class="card-img-top rounded-2 mb-3"
-                style="object-fit: cover; max-height: 150px"
-                src="{{ service.image }}"
-                alt=""
-              />
-            </div>
-            <div
-              class="d-flex flex-column h-100 justify-content-between align-items-baseline"
-            >
-              <div class="w-100">
-                <div
-                  class="d-flex justify-content-between align-items-baseline"
-                >
-                  <h5 class="text-truncate w-75">{{ service.title }}</h5>
-                  <div class="gap-1 fs-5">
-                    <button
-                      *ngIf="editMode"
-                      (click)="editService(categories, service)"
-                      class="border-0 bg-transparent"
-                    >
-                      <i class="fa-solid fa-square-pen"></i>
-                    </button>
-                    <button
-                      *ngIf="editMode"
-                      (click)="deleteService(service.title, service.id)"
-                      class="border-0 bg-transparent"
-                    >
-                      <i class="fa-solid fa-square-minus"></i>
-                    </button>
-                  </div>
-                </div>
-                <p class="m-0">{{ service.description }}</p>
-                <div class="d-flex justify-content-between row my-2">
-                  <div
-                    class="text-capitalize d-flex align-items-baseline gap-1"
-                  >
-                    <i class="fa-solid fa-tag"></i>
-                    {{ service.category.name }}
-                  </div>
-                  <div>
-                    <i class="fa-solid fa-coins"></i>
-                    {{ service.price }}€
-                  </div>
-                  <div>
-                    <i class="fa-solid fa-location-dot"></i>
-                    {{ service.location }}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div
+      class="col-12 col-md-6 col-xl-4 mb-3 bg-white p-3 rounded-2 position-relative"
+      *ngFor="let singlePerformance of services"
+    >
+      <div *ngIf="editMode" class="position-absolute p-2 custom-top z-1">
+        <div class="d-flex justify-content-center gap-2">
+          <button
+            (click)="editService(categories, singlePerformance)"
+            class="btn-custom fw-medium text-start rounded-2"
+          >
+            <i class="fa-solid fa-square-pen"></i> Modifica
+          </button>
+          <button
+            (click)="
+              deleteService(singlePerformance.title, singlePerformance.id)
+            "
+            class="btn-custom fw-medium text-start rounded-2"
+          >
+            <i class="fa-solid fa-square-minus"></i> Elimina
+          </button>
         </div>
       </div>
+      <app-performance-card [performance]="singlePerformance">
+      </app-performance-card>
     </div>
   </div>
 </div>
