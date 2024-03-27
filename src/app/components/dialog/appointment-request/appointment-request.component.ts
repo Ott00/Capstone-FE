@@ -5,6 +5,7 @@ import { Appointment } from 'src/app/interfaces/appointment';
 import { AppointmentStatus } from 'src/app/interfaces/appointment-status';
 import { User } from 'src/app/interfaces/user';
 import { AppointmentService } from 'src/app/services/appointment.service';
+import { NewReviewComponent } from '../new-review/new-review.component';
 
 @Component({
   selector: 'app-appointment-request',
@@ -16,6 +17,8 @@ export class AppointmentRequestComponent implements OnInit {
   appointment: Appointment;
   appointmentStatus: AppointmentStatus[] = [];
   isFreelancer?: boolean;
+  today: Date = new Date(Date.now());
+  appointmentDay!: Date;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private appointmentSrv: AppointmentService,
@@ -24,6 +27,7 @@ export class AppointmentRequestComponent implements OnInit {
     this.dialog = data.dialog;
     this.appointment = data.appointment;
     this.isFreelancer = data.isFreelancer;
+    this.appointmentDay = new Date(this.appointment.date);
   }
 
   ngOnInit(): void {
@@ -53,6 +57,19 @@ export class AppointmentRequestComponent implements OnInit {
   getAppointmentStatus() {
     this.appointmentSrv.getAppointmentStatus().subscribe((response) => {
       this.appointmentStatus = response;
+    });
+  }
+
+  createReview(a: Appointment) {
+    const dialog = this.dialog.open(NewReviewComponent, {
+      data: {
+        appointment: a,
+        dialog: this.dialog,
+      },
+    });
+
+    dialog.afterClosed().subscribe(() => {
+      //
     });
   }
 }

@@ -42,6 +42,7 @@ import { AppointmentClientComponent } from './components/appointment-client/appo
 import { FooterComponent } from './components/footer/footer.component';
 import { DeleteElementComponent } from './components/dialog/delete-element/delete-element.component';
 import { EditProfileComponent } from './components/dialog/edit-profile/edit-profile.component';
+import { NewReviewComponent } from './components/dialog/new-review/new-review.component';
 
 const routes: Route[] = [
   {
@@ -147,6 +148,7 @@ const routes: Route[] = [
     FooterComponent,
     DeleteElementComponent,
     EditProfileComponent,
+    NewReviewComponent,
   ],
   imports: [
     BrowserModule,

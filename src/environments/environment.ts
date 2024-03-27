@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   baseUrl: 'http://localhost:4201',
   userBaseUrl: 'http://localhost:4201/users',
+  reviewBaseUrl: 'http://localhost:4201/reviews',
   categoryBaseUrl: 'http://localhost:4201/categories',
   performanceBaseUrl: 'http://localhost:4201/performances',
   freelancerServicesUrl: 'http://localhost:4201/performances/me',
