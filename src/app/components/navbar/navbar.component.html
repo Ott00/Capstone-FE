@@ -24,8 +24,12 @@
     </div>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav w-100 d-flex">
-        <div class="d-md-flex justify-content-between w-100">
-          <div class="d-flex">
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between w-100"
+        >
+          <div
+            class="d-flex flex-column align-items-center flex-md-row ms-md-3"
+          >
             <a
               class="nav-link"
               [routerLink]="['/']"
@@ -43,12 +47,8 @@
               Servizi
             </a>
           </div>
-          <div>
-            <a
-              class="nav-link"
-              [routerLink]="['/reserved']"
-              routerLinkActive="active"
-            >
+          <div class="me-3">
+            <a class="nav-link" [routerLink]="['/reserved']">
               Area Riservata
             </a>
           </div>

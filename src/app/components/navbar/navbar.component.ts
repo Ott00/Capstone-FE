@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { AuthData } from 'src/app/auth/interfaces/auth-data';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { User } from 'src/app/interfaces/user';
+import { ReservedService } from 'src/app/services/reserved.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,6 +12,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class NavbarComponent implements OnInit {
   userLoggedIn!: AuthData | null;
+
   constructor(private authSrv: AuthService) {}
 
   ngOnInit(): void {

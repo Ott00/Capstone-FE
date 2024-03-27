@@ -1,6 +1,12 @@
 .navbar {
   background-color: var(--primary-color);
 
+  .user-button {
+    &:hover {
+      border-color: black;
+    }
+  }
+
   img {
     width: 120px;
   }

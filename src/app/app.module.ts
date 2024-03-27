@@ -23,6 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonModule } from '@angular/material/button';
 
 import { NewServiceComponent } from './components/dialog/new-service/new-service.component';
 import { EditServiceComponent } from './components/dialog/edit-service/edit-service.component';
@@ -36,6 +38,8 @@ import { AppointmentExpertComponent } from './components/appointment-expert/appo
 import { AppointmentRequestComponent } from './components/dialog/appointment-request/appointment-request.component';
 import { AppointmentClientComponent } from './components/appointment-client/appointment-client.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { DeleteElementComponent } from './components/dialog/delete-element/delete-element.component';
+import { EditProfileComponent } from './components/dialog/edit-profile/edit-profile.component';
 
 const routes: Route[] = [
   {
@@ -139,6 +143,8 @@ const routes: Route[] = [
     AppointmentRequestComponent,
     AppointmentClientComponent,
     FooterComponent,
+    DeleteElementComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -149,7 +155,10 @@ const routes: Route[] = [
     BrowserAnimationsModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatTabsModule,
+    MatButtonModule,
   ],
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
