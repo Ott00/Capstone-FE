@@ -8,12 +8,17 @@ import {
 } from '@angular/router';
 import { Observable, map, take } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authSrv: AuthService, private router: Router) {}
+  constructor(
+    private authSrv: AuthService,
+    private router: Router,
+    private snackbar: MatSnackBar
+  ) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -32,6 +37,11 @@ export class AuthGuard implements CanActivate {
         //   'Per visualizzare questa risorsa devi essere loggato!\nAccedi o registrati'
         // );
         this.router.navigate(['/login']);
+        this.snackbar.open(
+          'Per accedere alle risorse devi effettuare il login!',
+          'Ok',
+          { duration: 2500 }
+        );
         return false;
       })
     );

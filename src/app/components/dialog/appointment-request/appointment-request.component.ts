@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Appointment } from 'src/app/interfaces/appointment';
 import { AppointmentStatus } from 'src/app/interfaces/appointment-status';
 import { User } from 'src/app/interfaces/user';
@@ -17,7 +18,8 @@ export class AppointmentRequestComponent implements OnInit {
   isFreelancer?: boolean;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private appointmentSrv: AppointmentService
+    private appointmentSrv: AppointmentService,
+    private snackbar: MatSnackBar
   ) {
     this.dialog = data.dialog;
     this.appointment = data.appointment;
@@ -34,6 +36,7 @@ export class AppointmentRequestComponent implements OnInit {
     };
     this.appointmentSrv.updateStatusAppointment(id, data).subscribe(() => {
       this.dialog.closeAll();
+      this.snackbar.open('Appuntamento confermato!', 'Ok', { duration: 2500 });
     });
   }
 
@@ -43,6 +46,7 @@ export class AppointmentRequestComponent implements OnInit {
     };
     this.appointmentSrv.updateStatusAppointment(id, data).subscribe(() => {
       this.dialog.closeAll();
+      this.snackbar.open('Appuntamento declinato!', 'Ok', { duration: 2500 });
     });
   }
 

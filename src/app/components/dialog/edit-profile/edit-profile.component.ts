@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from 'src/app/interfaces/user';
 import { ReservedService } from 'src/app/services/reserved.service';
 
@@ -16,7 +17,8 @@ export class EditProfileComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private reservedSrv: ReservedService
+    private reservedSrv: ReservedService,
+    private snackbar: MatSnackBar
   ) {
     this.user = data.user;
     this.dialog = data.dialog;
@@ -27,6 +29,7 @@ export class EditProfileComponent implements OnInit {
   editMe(registerForm: NgForm) {
     this.reservedSrv.updateMe(registerForm.value).subscribe(() => {
       this.dialog.closeAll();
+      this.snackbar.open('Utente mofidicato!', 'Ok', { duration: 2500 });
     });
   }
 

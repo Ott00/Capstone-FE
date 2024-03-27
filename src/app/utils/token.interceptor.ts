@@ -12,6 +12,7 @@ import { Observable, catchError, switchMap, take, tap, throwError } from 'rxjs';
 import { AuthService } from '../auth/services/auth.service';
 import { SpinnerService } from '../components/spinner/spinner.service';
 import { environment } from 'src/environments/environment';
+import { Route } from '@angular/router';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -25,7 +26,6 @@ export class TokenInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    this.spinnerSrv.requestStarted();
     return this.setAuthorization(next, request);
   }
 
@@ -37,6 +37,7 @@ export class TokenInterceptor implements HttpInterceptor {
       take(1),
       switchMap((user) => {
         if (!user) {
+          this.spinnerSrv.requestEnded();
           return next.handle(request);
         } else {
           request = request.clone({

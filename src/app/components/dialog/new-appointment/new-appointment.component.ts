@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { NewAppointment } from 'src/app/interfaces/new-appointment';
 import { Service } from 'src/app/interfaces/service';
 import { User } from 'src/app/interfaces/user';
@@ -19,7 +20,8 @@ export class NewAppointmentComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private appointmentSrv: AppointmentService
+    private appointmentSrv: AppointmentService,
+    private snackbar: MatSnackBar
   ) {
     this.performance = data.performance;
     this.dialog = data.dialog;
@@ -44,8 +46,8 @@ export class NewAppointmentComponent implements OnInit {
     };
 
     this.appointmentSrv.bookAppointment(payloadAppointment).subscribe(() => {
-      console.log('Appuntamento Richiesto');
       this.dialog.closeAll();
+      this.snackbar.open('Appuntamento richiesto!', 'Ok', { duration: 2500 });
     });
   }
 }

@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReservedService } from 'src/app/services/reserved.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class DeleteElementComponent implements OnInit {
 
   constructor(
     private reservedSrv: ReservedService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private snackbar: MatSnackBar
   ) {
     this.id = data.id;
     this.title = data.title;
@@ -27,6 +29,7 @@ export class DeleteElementComponent implements OnInit {
   deleteService() {
     this.reservedSrv.deleteService(this.id).subscribe(() => {
       this.dialogRef.closeAll();
+      this.snackbar.open('Servizio rimosso!', 'Ok', { duration: 2500 });
     });
   }
 }

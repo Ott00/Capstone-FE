@@ -8,12 +8,14 @@ import {
 import { Observable, catchError, of } from 'rxjs';
 import { ErrorService } from '../services/error.service';
 import { SpinnerService } from '../components/spinner/spinner.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class ErrorHandlerInterceptor implements HttpInterceptor {
   constructor(
     private errorSrv: ErrorService,
-    private spinnerSrv: SpinnerService
+    private spinnerSrv: SpinnerService,
+    private snackbar: MatSnackBar
   ) {}
 
   intercept(
@@ -26,7 +28,8 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
         this.errorSrv.setError(err.error.message);
         this.errorSrv.getError();
 
-        console.log(err.error);
+        this.snackbar.open(err.error.message, 'Ok', { duration: 2500 });
+        // console.log(err.error);
 
         return of(err.error);
       })

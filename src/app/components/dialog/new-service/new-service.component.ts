@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Category } from 'src/app/interfaces/category';
 import { ResponseImage } from 'src/app/interfaces/response-image';
 import { PerfomancesService } from 'src/app/services/performances.service';
@@ -24,7 +25,8 @@ export class NewServiceComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private reservedSrv: ReservedService,
-    private performanceSrv: PerfomancesService
+    private performanceSrv: PerfomancesService,
+    private snackbar: MatSnackBar
   ) {
     this.categories = data.categories;
     this.dialog = data.dialog;
@@ -55,6 +57,7 @@ export class NewServiceComponent implements OnInit {
 
     this.reservedSrv.saveService(newServiceForm.value).subscribe((response) => {
       this.dialog.closeAll();
+      this.snackbar.open('Servizio salvato!', 'Ok', { duration: 2500 });
     });
   }
 }

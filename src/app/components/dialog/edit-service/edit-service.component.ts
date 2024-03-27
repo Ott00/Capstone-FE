@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Category } from 'src/app/interfaces/category';
 import { Service } from 'src/app/interfaces/service';
 import { ReservedService } from 'src/app/services/reserved.service';
@@ -20,7 +21,8 @@ export class EditServiceComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private reservedSrv: ReservedService
+    private reservedSrv: ReservedService,
+    private snackbar: MatSnackBar
   ) {
     this.categories = data.categories;
     this.dialog = data.dialog;
@@ -37,6 +39,7 @@ export class EditServiceComponent implements OnInit {
       .editService(newServiceForm.value, this.service.id)
       .subscribe(() => {
         this.dialog.closeAll();
+        this.snackbar.open('Servizio mofidicato!', 'Ok', { duration: 2500 });
       });
   }
 
