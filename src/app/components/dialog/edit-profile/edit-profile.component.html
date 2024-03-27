@@ -1,0 +1,138 @@
+<div class="row" *ngIf="user">
+  <div class="col-12 d-flex flex-column align-items-center">
+    <form
+      #registerForm="ngForm"
+      (ngSubmit)="editMe(registerForm)"
+      class="px-5 p-3 form-size w-100 login-form rounded-3"
+    >
+      <div class="mb-3 d-flex justify-content-center row">
+        <div class="col-12 col-md-6 mb-3 mb-md-0">
+          <label for="name" class="form-label">Nome</label>
+
+          <input
+            type="text"
+            name="name"
+            class="form-control"
+            required
+            [(ngModel)]="user.name"
+          />
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="surname" class="form-label">Cognome</label>
+
+          <input
+            type="text"
+            name="surname"
+            class="form-control"
+            required
+            [(ngModel)]="user.surname"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          required
+          email
+          [(ngModel)]="user.email"
+          [ngClass]="{
+                              'shake-horizontal':
+                              registerForm.controls['email'] && registerForm.controls['email'].errors?.['email'] && registerForm.controls['email'].touched
+                            }"
+        />
+        <div
+          *ngIf="registerForm.controls['email'] && registerForm.controls['email'].errors?.['email'] && registerForm.controls['email'].touched"
+        >
+          <span class="text-danger opacity-75">Email non valida!</span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <div class="position-relative">
+          <div class="position-absolute end-0 mt-1 me-2 z-1">
+            <button
+              type="button"
+              class="btn p-0 m-0"
+              (mousedown)="showPasswordOrNot()"
+              [class.hide]="showPassword"
+            >
+              <i class="fa-solid fa-eye text-custom"></i>
+            </button>
+            <button
+              type="button"
+              class="btn p-0 m-0"
+              (mouseup)="showPasswordOrNot()"
+              [class.hide]="!showPassword"
+            >
+              <i class="fa-solid fa-eye-slash text-custom"></i>
+            </button>
+          </div>
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            class="form-control"
+            name="password"
+            [minlength]="8"
+            required
+            ngModel
+            [ngClass]="{
+              'shake-horizontal':
+                registerForm.controls['password'] &&
+                registerForm.controls['password'].touched &&
+                registerForm.controls['password'].invalid
+            }"
+          />
+          <div
+            *ngIf="
+              registerForm.controls['password'] &&
+              registerForm.controls['password'].touched &&
+              registerForm.controls['password'].invalid
+            "
+          >
+            <span class="text-danger opacity-75">
+              La password deve essere di almeno 8 caratteri!
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Telefono</label>
+
+        <input
+          type="text"
+          name="phone"
+          class="form-control"
+          [minlength]="10"
+          required
+          [(ngModel)]="user.phone"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="birthday" class="form-label">Data di Nascita</label>
+
+        <input
+          type="date"
+          name="birthday"
+          class="form-control"
+          [minlength]="10"
+          required
+          [(ngModel)]="user.birthday"
+        />
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <button
+          type="submit"
+          class="btn btn-custom px-4 py-1 mt-3"
+          [disabled]="registerForm.invalid"
+        >
+          Salva
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

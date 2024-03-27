@@ -2,17 +2,31 @@ p {
   font-size: 0.9rem;
 }
 
-.form-container {
-  input[type="date"]::-webkit-calendar-picker-indicator {
+img {
+  opacity: 1;
+  z-index: -1;
+
+  &:hover {
     opacity: 0;
-    z-index: 2;
-    padding: -10px;
-    font-size: 2rem;
-    position: absolute;
-    right: 1px;
+  }
+}
+
+label {
+  opacity: 0;
+  z-index: 1;
+
+  &:hover {
+    opacity: 1;
+    transition: 0.25s ease-in-out;
   }
 
-  .fa-calendar-days {
-    margin-right: 3px;
+  button {
+    opacity: 0.9;
+    background-color: var(--text-color);
+    color: white;
   }
+}
+
+input[type="file"] {
+  opacity: 0;
 }

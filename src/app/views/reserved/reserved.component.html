@@ -1,40 +1,78 @@
-<div class="row" *ngIf="user">
-  <div class="navbar col-12 col-md-2 d-flex flex-column">
-    <div class="d-flex flex-md-column gap-2 px-2 w-100">
-      <button
-        class="btn"
-        [routerLink]="['./profile']"
-        routerLinkActive="active"
-      >
-        Profilo
-      </button>
-      <button
-        *ngIf="user.role.toLocaleLowerCase() === 'freelancer'"
-        class="btn"
-        [routerLink]="['./services']"
-        routerLinkActive="active"
-      >
-        Servizi
-      </button>
-      <button
-        *ngIf="user.role.toLocaleLowerCase() === 'freelancer'"
-        class="btn"
-        [routerLink]="['./expertAppointments']"
-        routerLinkActive="active"
-      >
-        Appuntamenti
-      </button>
-      <button
-        *ngIf="user.role.toLocaleLowerCase() === 'client'"
-        class="btn"
-        [routerLink]="['./clientAppointments']"
-        routerLinkActive="active"
-      >
-        Appuntamenti
-      </button>
+<div class="row justify-content-center" *ngIf="user">
+  <div class="col-12 minor-navbar rounded-3 container-element">
+    <div class="d-flex justify-content-center flex-wrap gap-2">
+      <nav mat-tab-nav-bar>
+        <a
+          mat-tab-link
+          [routerLink]="['./profile']"
+          routerLinkActive="mat-tab-link-active"
+          (click)="activateTab('profile')"
+          [active]="activeLink === 'profile'"
+          >Profilo
+        </a>
+        <a
+          mat-tab-link
+          [routerLink]="['./services']"
+          routerLinkActive="mat-tab-link-active"
+          *ngIf="user.role.toLocaleLowerCase() === 'freelancer'"
+          (click)="activateTab('services')"
+          [active]="activeLink === 'services'"
+          >Servizi
+        </a>
+        <a
+          mat-tab-link
+          [routerLink]="['./expertAppointments']"
+          routerLinkActive="mat-tab-link-active"
+          *ngIf="user.role.toLocaleLowerCase() === 'freelancer'"
+          (click)="activateTab('expertAppointments')"
+          [active]="activeLink === 'expertAppointments'"
+          >Appuntamenti
+        </a>
+        <a
+          mat-tab-link
+          [routerLink]="['./clientAppointments']"
+          routerLinkActive="mat-tab-link-active"
+          *ngIf="user.role.toLocaleLowerCase() === 'client'"
+          (click)="activateTab('clientAppointments')"
+          [active]="activeLink === 'clientAppointments'"
+          >Appuntamenti
+        </a>
+      </nav>
     </div>
   </div>
-  <div class="col-12 col-md-10 px-2 my-2">
+  <div class="col-12 rounded-3 container-element router">
     <router-outlet></router-outlet>
   </div>
 </div>
+
+<!-- <button
+class="btn"
+[routerLink]="['./profile']"
+routerLinkActive="active"
+>
+Profilo
+</button>
+<button
+*ngIf="user.role.toLocaleLowerCase() === 'freelancer'"
+class="btn"
+[routerLink]="['./services']"
+routerLinkActive="active"
+>
+Servizi
+</button>
+<button
+*ngIf="user.role.toLocaleLowerCase() === 'freelancer'"
+class="btn"
+[routerLink]="['./expertAppointments']"
+routerLinkActive="active"
+>
+Appuntamenti
+</button>
+<button
+*ngIf="user.role.toLocaleLowerCase() === 'client'"
+class="btn"
+[routerLink]="['./clientAppointments']"
+routerLinkActive="active"
+>
+Appuntamenti
+</button> -->

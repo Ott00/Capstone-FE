@@ -45,4 +45,8 @@ export class ReservedService {
   editService(service: Service, id: string): Observable<Service> {
     return this.http.put<Service>(`${this.performanceBaseUrl}/${id}`, service);
   }
+
+  editUserAvatar(data: FormData) {
+    return this.http.patch(`${this.meUrl}/uploadAvatar`, data);
+  }
 }

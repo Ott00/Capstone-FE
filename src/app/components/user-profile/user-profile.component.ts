@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/app/interfaces/user';
 import { ReservedService } from 'src/app/services/reserved.service';
+import { EditProfileComponent } from '../dialog/edit-profile/edit-profile.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,8 +12,19 @@ import { ReservedService } from 'src/app/services/reserved.service';
 })
 export class UserProfileComponent implements OnInit {
   user!: User;
-  showPassword!: boolean;
-  constructor(private reservedSrv: ReservedService) {}
+
+  hide: boolean = true;
+  hovered: boolean = false;
+  dialog: MatDialog;
+
+  file!: File;
+
+  constructor(
+    private reservedSrv: ReservedService,
+    private dialogRef: MatDialog
+  ) {
+    this.dialog = dialogRef;
+  }
 
   ngOnInit(): void {
     this.getMe();
@@ -23,18 +36,26 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  editMe(registerForm: NgForm) {
-    console.log(registerForm.value);
-    try {
-      this.reservedSrv
-        .updateMe(registerForm.value)
-        .subscribe(() => this.getMe());
-    } catch (error: any) {
-      alert(error);
-    }
+  editMe() {
+    const dialog = this.dialog.open(EditProfileComponent, {
+      data: { user: this.user, dialog: this.dialog },
+    });
+    dialog.afterClosed().subscribe(() => {
+      this.getMe();
+    });
   }
 
-  showPasswordOrNot() {
-    this.showPassword = !this.showPassword;
+  uploadImage(image: any) {
+    this.file = image.target.files[0];
+    if (this.file) {
+      const formData: FormData = new FormData();
+      formData.append('avatar', this.file);
+
+      this.reservedSrv.editUserAvatar(formData).subscribe(() => {
+        this.getMe();
+      });
+    } else {
+      throw 'Nessun file caricato.';
+    }
   }
 }

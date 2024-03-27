@@ -1,16 +1,22 @@
-.navbar {
-  height: calc(100vh - 72px);
-  border-inline-end: 1px solid var(--primary-color);
+.minor-navbar,
+.router {
+  max-width: 1200px;
+  width: 100%;
+  margin-top: 1rem;
 
-  .active {
-    font-weight: bold;
-    background-color: var(--tertiary-color);
-    color: var(--white);
+  .mat-tab-label-active {
+    opacity: 1;
   }
+}
+
+.container-element {
+  background-color: var(--primary-color);
+  padding: 1rem 2rem;
 }
 
 .btn {
   border: 1px solid var(--tertiary-color);
+  padding: 0.5rem 1.5rem;
   &:hover {
     border-color: var(--tertiary-color);
   }
