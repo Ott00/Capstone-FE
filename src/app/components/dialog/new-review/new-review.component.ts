@@ -19,6 +19,8 @@ export class NewReviewComponent implements OnInit {
   existReview: boolean;
   review!: Review;
 
+  selectedRating!: number;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private reviewSrv: ReviewService,
@@ -39,12 +41,17 @@ export class NewReviewComponent implements OnInit {
         .getReview(this.appointment.performance.id)
         .subscribe((response) => {
           this.review = response;
+          this.selectedRating = response.evaluation;
         });
     }
   }
 
   createReview(newReview: NgForm, performanceId: string) {
     newReview.form.addControl('performance_id', new FormControl(performanceId));
+    newReview.form.addControl(
+      'evaluation',
+      new FormControl(this.selectedRating)
+    );
     this.reviewSrv.createReview(newReview.value).subscribe((response) => {
       this.dialog.closeAll();
       this.snackbar.open('Recensione aggiunta!', 'Ok', { duration: 2500 });
@@ -53,11 +60,19 @@ export class NewReviewComponent implements OnInit {
 
   updateReview(newReview: NgForm, performanceId: string) {
     newReview.form.addControl('performance_id', new FormControl(performanceId));
+    newReview.form.addControl(
+      'evaluation',
+      new FormControl(this.selectedRating)
+    );
     this.reviewSrv
       .updateReview(newReview.value, this.review.id)
       .subscribe((response) => {
         this.dialog.closeAll();
         this.snackbar.open('Recensione modificata!', 'Ok', { duration: 2500 });
       });
+  }
+
+  updateRating(rating: number) {
+    this.selectedRating = rating;
   }
 }

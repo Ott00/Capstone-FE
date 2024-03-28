@@ -12,13 +12,70 @@
   <div class="mb-3 d-flex justify-content-center row">
     <div class="col-6">
       <label for="evaluation" class="form-label">Valutazione</label>
-      <input
-        type="number"
-        name="evaluation"
-        class="form-control"
-        required
-        ngModel
-      />
+      <div id="full-stars-example">
+        <div class="rating-group form-control">
+          <label aria-label="1 star" class="rating__label" for="rating-1"
+            ><i class="rating__icon rating__icon--star fa fa-star"></i
+          ></label>
+          <input
+            class="rating__input"
+            name="evaluation"
+            id="rating-1"
+            value="1"
+            type="radio"
+            [checked]="selectedRating === 1"
+            (change)="updateRating(1)"
+          />
+          <label aria-label="2 stars" class="rating__label" for="rating-2"
+            ><i class="rating__icon rating__icon--star fa fa-star"></i
+          ></label>
+          <input
+            class="rating__input"
+            name="evaluation"
+            id="rating-2"
+            value="2"
+            type="radio"
+            [checked]="selectedRating === 2"
+            (change)="updateRating(2)"
+          />
+          <label aria-label="3 stars" class="rating__label" for="rating-3"
+            ><i class="rating__icon rating__icon--star fa fa-star"></i
+          ></label>
+          <input
+            class="rating__input"
+            name="evaluation"
+            id="rating-3"
+            value="3"
+            type="radio"
+            [checked]="selectedRating === 3"
+            (change)="updateRating(3)"
+          />
+          <label aria-label="4 stars" class="rating__label" for="rating-4"
+            ><i class="rating__icon rating__icon--star fa fa-star"></i
+          ></label>
+          <input
+            class="rating__input"
+            name="evaluation"
+            id="rating-4"
+            value="4"
+            type="radio"
+            [checked]="selectedRating === 4"
+            (change)="updateRating(4)"
+          />
+          <label aria-label="5 stars" class="rating__label" for="rating-5"
+            ><i class="rating__icon rating__icon--star fa fa-star"></i
+          ></label>
+          <input
+            class="rating__input"
+            name="evaluation"
+            id="rating-5"
+            value="5"
+            type="radio"
+            [checked]="selectedRating === 5"
+            (change)="updateRating(5)"
+          />
+        </div>
+      </div>
     </div>
     <div class="col-6">
       <label for="title" class="form-label">Titolo Recensione</label>
@@ -55,13 +112,79 @@
   <div class="mb-3 d-flex justify-content-center row">
     <div class="col-6">
       <label for="evaluation" class="form-label">Valutazione</label>
-      <input
+
+      <div id="full-stars-example">
+        <div class="rating-group form-control">
+          <label aria-label="1 star" class="rating__label" for="rating-1"
+            ><i class="rating__icon rating__icon--star fa fa-star"></i
+          ></label>
+          <input
+            class="rating__input"
+            name="evaluation"
+            id="rating-1"
+            value="1"
+            type="radio"
+            [checked]="selectedRating === 1"
+            (change)="updateRating(1)"
+          />
+          <label aria-label="2 stars" class="rating__label" for="rating-2"
+            ><i class="rating__icon rating__icon--star fa fa-star"></i
+          ></label>
+          <input
+            class="rating__input"
+            name="evaluation"
+            id="rating-2"
+            value="2"
+            type="radio"
+            [checked]="selectedRating === 2"
+            (change)="updateRating(2)"
+          />
+          <label aria-label="3 stars" class="rating__label" for="rating-3"
+            ><i class="rating__icon rating__icon--star fa fa-star"></i
+          ></label>
+          <input
+            class="rating__input"
+            name="evaluation"
+            id="rating-3"
+            value="3"
+            type="radio"
+            [checked]="selectedRating === 3"
+            (change)="updateRating(3)"
+          />
+          <label aria-label="4 stars" class="rating__label" for="rating-4"
+            ><i class="rating__icon rating__icon--star fa fa-star"></i
+          ></label>
+          <input
+            class="rating__input"
+            name="evaluation"
+            id="rating-4"
+            value="4"
+            type="radio"
+            [checked]="selectedRating === 4"
+            (change)="updateRating(4)"
+          />
+          <label aria-label="5 stars" class="rating__label" for="rating-5"
+            ><i class="rating__icon rating__icon--star fa fa-star"></i
+          ></label>
+          <input
+            class="rating__input"
+            name="evaluation"
+            id="rating-5"
+            value="5"
+            type="radio"
+            [checked]="selectedRating === 5"
+            (change)="updateRating(5)"
+          />
+        </div>
+      </div>
+
+      <!-- <input
         type="number"
         name="evaluation"
         class="form-control"
         required
         [(ngModel)]="review.evaluation"
-      />
+      /> -->
     </div>
     <div class="col-6">
       <label for="title" class="form-label">Titolo Recensione</label>
