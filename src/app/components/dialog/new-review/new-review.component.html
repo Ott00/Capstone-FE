@@ -1,15 +1,16 @@
 <div class="text-center px-5 mb-3">
-  <h5 class="fw-bold">Recensisci il servizio</h5>
+  <h5 class="fw-bold" *ngIf="!existReview">Recensisci il servizio</h5>
+  <h5 class="fw-bold" *ngIf="existReview">Modifica la recensione</h5>
   <h6>"{{ appointment.performance.title }}"</h6>
 </div>
 <form
   *ngIf="!existReview"
   #newReview="ngForm"
   (ngSubmit)="createReview(newReview, appointment.performance.id)"
-  class="px-5 py-2 form-size w-100 login-form rounded-3"
+  class="px-5 py-2 w-100 rounded-3"
 >
   <div class="mb-3 d-flex justify-content-center row">
-    <div class="col-12">
+    <div class="col-6">
       <label for="evaluation" class="form-label">Valutazione</label>
       <input
         type="number"
@@ -19,7 +20,7 @@
         ngModel
       />
     </div>
-    <div class="col-12">
+    <div class="col-6">
       <label for="title" class="form-label">Titolo Recensione</label>
       <input type="text" name="title" class="form-control" required ngModel />
     </div>
@@ -49,10 +50,10 @@
   *ngIf="review"
   #updateReviewForm="ngForm"
   (ngSubmit)="updateReview(updateReviewForm, appointment.performance.id)"
-  class="px-5 py-2 form-size w-100 login-form rounded-3"
+  class="px-5 py-2 w-100 rounded-3"
 >
   <div class="mb-3 d-flex justify-content-center row">
-    <div class="col-12">
+    <div class="col-6">
       <label for="evaluation" class="form-label">Valutazione</label>
       <input
         type="number"
@@ -62,7 +63,7 @@
         [(ngModel)]="review.evaluation"
       />
     </div>
-    <div class="col-12">
+    <div class="col-6">
       <label for="title" class="form-label">Titolo Recensione</label>
       <input
         type="text"
