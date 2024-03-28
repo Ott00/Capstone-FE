@@ -36,8 +36,19 @@
       !isFreelancer
     "
   >
-    <button class="col-5 btn btn-custom" (click)="createReview(appointment)">
+    <button
+      *ngIf="!existReview"
+      class="col-5 btn btn-custom"
+      (click)="createReview(appointment, false)"
+    >
       Recensisci
+    </button>
+    <button
+      *ngIf="existReview"
+      class="col-5 btn btn-custom"
+      (click)="createReview(appointment, true)"
+    >
+      Modifica Recensione
     </button>
   </div>
   <div

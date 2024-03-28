@@ -3,6 +3,7 @@
   <h6>"{{ appointment.performance.title }}"</h6>
 </div>
 <form
+  *ngIf="!existReview"
   #newReview="ngForm"
   (ngSubmit)="createReview(newReview, appointment.performance.id)"
   class="px-5 py-2 form-size w-100 login-form rounded-3"
@@ -37,8 +38,64 @@
   <div class="d-flex justify-content-center">
     <button
       type="submit"
-      class="btn btn-custom px-5 fw-bold mt-3"
+      class="btn btn-custom px-4 py-1 fw-bold mt-3"
       [disabled]="newReview.invalid"
+    >
+      Invia recensione
+    </button>
+  </div>
+</form>
+<form
+  *ngIf="review"
+  #updateReviewForm="ngForm"
+  (ngSubmit)="updateReview(updateReviewForm, appointment.performance.id)"
+  class="px-5 py-2 form-size w-100 login-form rounded-3"
+>
+  <div class="mb-3 d-flex justify-content-center row">
+    <div class="col-12">
+      <label for="evaluation" class="form-label">Valutazione</label>
+      <input
+        type="number"
+        name="evaluation"
+        class="form-control"
+        required
+        [(ngModel)]="review.evaluation"
+      />
+    </div>
+    <div class="col-12">
+      <label for="title" class="form-label">Titolo Recensione</label>
+      <input
+        type="text"
+        name="title"
+        class="form-control"
+        required
+        [(ngModel)]="review.title"
+      />
+    </div>
+    <div class="col-12">
+      <label for="comment" class="form-label">Recensione</label>
+      <textarea
+        type="text"
+        name="comment"
+        class="form-control"
+        required
+        [(ngModel)]="review.comment"
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between gap-3">
+    <button
+      mat-dialog-close
+      type="button"
+      class="btn btn-custom px-4 py-1 fw-bold mt-3"
+    >
+      Annulla
+    </button>
+    <button
+      type="submit"
+      class="btn btn-custom px-4 py-1 fw-bold mt-3"
+      [disabled]="updateReviewForm.invalid"
     >
       Invia recensione
     </button>

@@ -6,6 +6,7 @@ import { AppointmentStatus } from 'src/app/interfaces/appointment-status';
 import { User } from 'src/app/interfaces/user';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { NewReviewComponent } from '../new-review/new-review.component';
+import { ReviewService } from 'src/app/services/review.service';
 
 @Component({
   selector: 'app-appointment-request',
@@ -19,9 +20,11 @@ export class AppointmentRequestComponent implements OnInit {
   isFreelancer?: boolean;
   today: Date = new Date(Date.now());
   appointmentDay!: Date;
+  existReview!: boolean;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private appointmentSrv: AppointmentService,
+    private reviewSrv: ReviewService,
     private snackbar: MatSnackBar
   ) {
     this.dialog = data.dialog;
@@ -31,6 +34,7 @@ export class AppointmentRequestComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.checkReviewExists();
     this.getAppointmentStatus();
   }
 
@@ -60,11 +64,20 @@ export class AppointmentRequestComponent implements OnInit {
     });
   }
 
-  createReview(a: Appointment) {
+  checkReviewExists() {
+    this.reviewSrv
+      .checkReviewExists(this.appointment.performance.id)
+      .subscribe((response) => {
+        this.existReview = response;
+      });
+  }
+
+  createReview(a: Appointment, existReview: boolean) {
     const dialog = this.dialog.open(NewReviewComponent, {
       data: {
         appointment: a,
         dialog: this.dialog,
+        existReview: existReview,
       },
     });
 

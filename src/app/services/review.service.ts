@@ -12,7 +12,21 @@ export class ReviewService {
 
   constructor(private http: HttpClient) {}
 
-  createReview(data: Partial<Review>): Observable<Review> {
+  checkReviewExists(performanceId: string): Observable<boolean> {
+    return this.http.get<boolean>(
+      `${this.reviewBaseUrl}/${performanceId}/check`
+    );
+  }
+
+  getReview(performanceId: string): Observable<Review> {
+    return this.http.get<Review>(`${this.reviewBaseUrl}/${performanceId}/get`);
+  }
+
+  createReview(data: Review): Observable<Review> {
     return this.http.post<Review>(`${this.reviewBaseUrl}`, data);
+  }
+
+  updateReview(data: Review, reviewId: string): Observable<Review> {
+    return this.http.put<Review>(`${this.reviewBaseUrl}/${reviewId}`, data);
   }
 }
