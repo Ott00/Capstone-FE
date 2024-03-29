@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Review } from '../interfaces/review';
 import { environment } from 'src/environments/environment';
+import { ResponseReview } from '../interfaces/response-review';
 
 @Injectable({
   providedIn: 'root',
@@ -28,5 +29,9 @@ export class ReviewService {
 
   updateReview(data: Review, reviewId: string): Observable<Review> {
     return this.http.put<Review>(`${this.reviewBaseUrl}/${reviewId}`, data);
+  }
+
+  getFreelancerReview(): Observable<ResponseReview> {
+    return this.http.get<ResponseReview>(`${this.reviewBaseUrl}/me`);
   }
 }
