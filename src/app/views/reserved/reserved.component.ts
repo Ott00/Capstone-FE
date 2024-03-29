@@ -44,6 +44,9 @@ export class ReservedComponent implements OnInit {
       case '/reserved/clientAppointments':
         this.activeLink = 'clientAppointments';
         break;
+      case '/reserved/reviews':
+        this.activeLink = 'reviews';
+        break;
     }
   }
 }

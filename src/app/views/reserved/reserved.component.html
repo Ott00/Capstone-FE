@@ -37,6 +37,15 @@
           [active]="activeLink === 'clientAppointments'"
           >Appuntamenti
         </a>
+        <a
+          mat-tab-link
+          [routerLink]="['./reviews']"
+          routerLinkActive="mat-tab-link-active"
+          *ngIf="user.role.toLocaleLowerCase() === 'freelancer'"
+          (click)="activateTab('reviews')"
+          [active]="activeLink === 'reviews'"
+          >Recensioni
+        </a>
       </nav>
     </div>
   </div>

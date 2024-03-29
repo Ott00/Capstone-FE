@@ -43,6 +43,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DeleteElementComponent } from './components/dialog/delete-element/delete-element.component';
 import { EditProfileComponent } from './components/dialog/edit-profile/edit-profile.component';
 import { NewReviewComponent } from './components/dialog/new-review/new-review.component';
+import { ReviewExpertComponent } from './components/review-expert/review-expert.component';
+import { ReviewElementComponent } from './components/review-element/review-element.component';
 
 const routes: Route[] = [
   {
@@ -114,6 +116,12 @@ const routes: Route[] = [
         canActivate: [RoleGuard],
         data: { expectedRole: 'FREELANCER' },
       },
+      {
+        path: 'reviews',
+        component: ReviewExpertComponent,
+        canActivate: [RoleGuard],
+        data: { expectedRole: 'FREELANCER' },
+      },
     ],
   },
   {
@@ -149,6 +157,7 @@ const routes: Route[] = [
     DeleteElementComponent,
     EditProfileComponent,
     NewReviewComponent,
+    ReviewElementComponent,
   ],
   imports: [
     BrowserModule,
