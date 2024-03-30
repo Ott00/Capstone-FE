@@ -1,1 +1,77 @@
-<p>review-expert works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div
+      class="col-12 d-flex justify-content-center align-items-center bg-custom rounded-2 p-1 mb-3"
+    >
+      <h6 class="m-0">Recensioni</h6>
+    </div>
+    <div class="col-12" *ngIf="reviews">
+      <div class="bg-white rounded-2 p-3">
+        <div class="row">
+          <div class="col-12 col-md-3 mb-3 mb-md-0">
+            <div class="px-md-3">
+              <p class="average m-0">{{ averageEvaluation.toFixed(1) }}</p>
+              <div class="w-100">
+                <meter
+                  class="average-rating"
+                  [style.--percent]="averageEvaluation"
+                  min="1"
+                  max="5"
+                ></meter>
+              </div>
+              <small class="text-secondary"
+                >{{ reviews.length }} Recensioni</small
+              >
+            </div>
+          </div>
+          <div class="col-12 col-md-9">
+            <div
+              class="d-flex flex-column h-100 justify-content-between pe-md-3"
+            >
+              <div class="d-flex align-items-center gap-3">
+                <label for="5">5</label
+                ><mat-progress-bar
+                  id="5"
+                  mode="determinate"
+                  [value]="evaluationCounts[5]"
+                ></mat-progress-bar>
+              </div>
+              <div class="d-flex align-items-center gap-3">
+                <label for="4">4</label
+                ><mat-progress-bar
+                  id="4"
+                  mode="determinate"
+                  [value]="evaluationCounts[4]"
+                ></mat-progress-bar>
+              </div>
+              <div class="d-flex align-items-center gap-3">
+                <label for="3">3</label
+                ><mat-progress-bar
+                  id="3"
+                  mode="determinate"
+                  [value]="evaluationCounts[3]"
+                ></mat-progress-bar>
+              </div>
+              <div class="d-flex align-items-center gap-3">
+                <label for="2">2</label
+                ><mat-progress-bar
+                  id="2"
+                  mode="determinate"
+                  [value]="evaluationCounts[2]"
+                ></mat-progress-bar>
+              </div>
+              <div class="d-flex align-items-center gap-3">
+                <label for="1">1</label
+                ><mat-progress-bar
+                  id="1"
+                  mode="determinate"
+                  [value]="evaluationCounts[1]"
+                ></mat-progress-bar>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

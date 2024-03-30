@@ -27,6 +27,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { NewServiceComponent } from './components/dialog/new-service/new-service.component';
 import { EditServiceComponent } from './components/dialog/edit-service/edit-service.component';
@@ -43,6 +44,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DeleteElementComponent } from './components/dialog/delete-element/delete-element.component';
 import { EditProfileComponent } from './components/dialog/edit-profile/edit-profile.component';
 import { NewReviewComponent } from './components/dialog/new-review/new-review.component';
+import { CommonModule } from '@angular/common';
 import { ReviewExpertComponent } from './components/review-expert/review-expert.component';
 import { ReviewElementComponent } from './components/review-element/review-element.component';
 
@@ -157,9 +159,11 @@ const routes: Route[] = [
     DeleteElementComponent,
     EditProfileComponent,
     NewReviewComponent,
+    ReviewExpertComponent,
     ReviewElementComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -172,6 +176,7 @@ const routes: Route[] = [
     MatButtonModule,
     MatDividerModule,
     MatSnackBarModule,
+    MatProgressBarModule,
   ],
 
   providers: [

@@ -1,7 +1,7 @@
 <div class="row justify-content-center" *ngIf="user">
   <div class="col-12 minor-navbar rounded-3 container-element">
-    <div class="d-flex justify-content-center flex-wrap gap-2">
-      <nav mat-tab-nav-bar>
+    <div class="d-flex justify-content-center w-100">
+      <nav mat-tab-nav-bar mat-align-tabs="center" class="w-100">
         <a
           mat-tab-link
           [routerLink]="['./profile']"
@@ -53,35 +53,3 @@
     <router-outlet></router-outlet>
   </div>
 </div>
-
-<!-- <button
-class="btn"
-[routerLink]="['./profile']"
-routerLinkActive="active"
->
-Profilo
-</button>
-<button
-*ngIf="user.role.toLocaleLowerCase() === 'freelancer'"
-class="btn"
-[routerLink]="['./services']"
-routerLinkActive="active"
->
-Servizi
-</button>
-<button
-*ngIf="user.role.toLocaleLowerCase() === 'freelancer'"
-class="btn"
-[routerLink]="['./expertAppointments']"
-routerLinkActive="active"
->
-Appuntamenti
-</button>
-<button
-*ngIf="user.role.toLocaleLowerCase() === 'client'"
-class="btn"
-[routerLink]="['./clientAppointments']"
-routerLinkActive="active"
->
-Appuntamenti
-</button> -->
