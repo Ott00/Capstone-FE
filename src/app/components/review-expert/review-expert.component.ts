@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ResponseReview } from 'src/app/interfaces/response-review';
 import { Review } from 'src/app/interfaces/review';
 import { ReviewService } from 'src/app/services/review.service';
 
@@ -8,6 +9,7 @@ import { ReviewService } from 'src/app/services/review.service';
   styleUrls: ['./review-expert.component.scss'],
 })
 export class ReviewExpertComponent implements OnInit {
+  reviewPageble!: ResponseReview;
   reviews!: Review[];
   averageEvaluation!: number;
   averageEvaluationForCSS!: string;
@@ -20,9 +22,9 @@ export class ReviewExpertComponent implements OnInit {
 
   getFreelancerReview() {
     this.reviewSrv.getFreelancerReview().subscribe((response) => {
+      this.reviewPageble = response;
       this.reviews = response.content;
       this.getAverageReview();
-      console.log(this.reviews);
     });
   }
 
@@ -52,7 +54,5 @@ export class ReviewExpertComponent implements OnInit {
           (this.evaluationCounts[key] / this.reviews.length) * 100;
       }
     }
-
-    console.log(this.evaluationCounts);
   }
 }

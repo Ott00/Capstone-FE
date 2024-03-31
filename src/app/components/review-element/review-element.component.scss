@@ -1,0 +1,42 @@
+.average {
+  font-size: 50px;
+  font-weight: bold;
+}
+.average-rating {
+  position: relative;
+  appearance: none;
+  color: transparent;
+  width: fit-content;
+  display: inline-block;
+  vertical-align: baseline;
+  font-size: 1.8rem;
+}
+
+.average-rating::before {
+  --percentCalc: calc(var(--percent) / 5 * 100%);
+  content: "★★★★★";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  color: var(--primary-color);
+  background: linear-gradient(
+    90deg,
+    var(--accent-color) var(--percentCalc),
+    rgba(0, 0, 0, 0.2) var(--percentCalc)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+small {
+  font-size: 0.7rem;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+  &:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+  }
+}

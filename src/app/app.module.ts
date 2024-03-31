@@ -84,7 +84,8 @@ const routes: Route[] = [
   {
     path: 'experts',
     component: ExpertsComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
+    data: { expectedRole: 'ADMIN' },
   },
   {
     path: 'reserved',

@@ -1,1 +1,52 @@
-<p>review-element works!</p>
+<div class="mb-3 px-3">
+  <div class="row p-3">
+    <div class="col-3">
+      <div class="d-flex align-items-center gap-2">
+        <img
+          width="45px"
+          class="img-thumbnail rounded-circle"
+          src="{{ review.client.avatar }}"
+          alt=""
+        />
+        <p class="m-0 fw-medium text-truncate">
+          {{ review.client.name }} {{ review.client.surname }}
+        </p>
+      </div>
+    </div>
+    <div class="col-9 border rounded-2 p-3">
+      <div class="d-flex justify-content-between">
+        <div>
+          <meter
+            class="average-rating"
+            [style.--percent]="review.evaluation"
+            min="1"
+            max="5"
+          ></meter>
+        </div>
+        <div>
+          <div *ngIf="!review.edited">
+            <small> {{ review.date }}</small>
+          </div>
+          <div *ngIf="review.edited">
+            <small> Ultima modifica: {{ review.lastEditDate }}</small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <small>
+          Servizio:
+          <a
+            class="fw-bold"
+            [routerLink]="['/services', review.performance.id]"
+            >{{ review.performance.title }}</a
+          >
+        </small>
+        <h6 class="my-2">{{ review.title }}</h6>
+        <p>
+          {{ review.comment }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
