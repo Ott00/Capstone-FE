@@ -28,7 +28,13 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
         this.errorSrv.setError(err.error.message);
         this.errorSrv.getError();
 
-        this.snackbar.open(err.error.message, 'Ok', { duration: 2500 });
+        if (err.error.message == 'Error in payload') {
+          const errorString: string = err.error.errorsList[0];
+          this.snackbar.open(errorString, 'Ok', { duration: 2500 });
+        } else {
+          this.snackbar.open(err.error.message, 'Ok', { duration: 2500 });
+        }
+
         // console.log(err.error);
 
         return of(err.error);
