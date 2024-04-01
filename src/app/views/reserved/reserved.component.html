@@ -39,11 +39,20 @@
         </a>
         <a
           mat-tab-link
-          [routerLink]="['./reviews']"
+          [routerLink]="['./expertReviews']"
           routerLinkActive="mat-tab-link-active"
           *ngIf="user.role.toLocaleLowerCase() === 'freelancer'"
-          (click)="activateTab('reviews')"
-          [active]="activeLink === 'reviews'"
+          (click)="activateTab('expertReviews')"
+          [active]="activeLink === 'expertReviews'"
+          >Recensioni
+        </a>
+        <a
+          mat-tab-link
+          [routerLink]="['./clientReviews']"
+          routerLinkActive="mat-tab-link-active"
+          *ngIf="user.role.toLocaleLowerCase() === 'client'"
+          (click)="activateTab('clientReviews')"
+          [active]="activeLink === 'clientReviews'"
           >Recensioni
         </a>
       </nav>

@@ -23,6 +23,10 @@ export class ReviewService {
     return this.http.get<Review>(`${this.reviewBaseUrl}/${performanceId}/get`);
   }
 
+  getReviewById(reviewId: string): Observable<Review> {
+    return this.http.get<Review>(`${this.reviewBaseUrl}/${reviewId}`);
+  }
+
   createReview(data: Review): Observable<Review> {
     return this.http.post<Review>(`${this.reviewBaseUrl}`, data);
   }
@@ -32,6 +36,10 @@ export class ReviewService {
   }
 
   getFreelancerReview(): Observable<ResponseReview> {
-    return this.http.get<ResponseReview>(`${this.reviewBaseUrl}/me`);
+    return this.http.get<ResponseReview>(`${this.reviewBaseUrl}/freelancer/me`);
+  }
+
+  getClientReview(): Observable<ResponseReview> {
+    return this.http.get<ResponseReview>(`${this.reviewBaseUrl}/client/me`);
   }
 }

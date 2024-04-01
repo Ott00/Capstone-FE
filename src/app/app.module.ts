@@ -47,6 +47,8 @@ import { NewReviewComponent } from './components/dialog/new-review/new-review.co
 import { CommonModule } from '@angular/common';
 import { ReviewExpertComponent } from './components/review-expert/review-expert.component';
 import { ReviewElementComponent } from './components/review-element/review-element.component';
+import { ReviewClientComponent } from './components/review-client/review-client.component';
+import { EditReviewComponent } from './components/dialog/edit-review/edit-review.component';
 
 const routes: Route[] = [
   {
@@ -120,10 +122,16 @@ const routes: Route[] = [
         data: { expectedRole: 'FREELANCER' },
       },
       {
-        path: 'reviews',
+        path: 'expertReviews',
         component: ReviewExpertComponent,
         canActivate: [RoleGuard],
         data: { expectedRole: 'FREELANCER' },
+      },
+      {
+        path: 'clientReviews',
+        component: ReviewClientComponent,
+        canActivate: [RoleGuard],
+        data: { expectedRole: 'CLIENT' },
       },
     ],
   },
@@ -162,6 +170,8 @@ const routes: Route[] = [
     NewReviewComponent,
     ReviewExpertComponent,
     ReviewElementComponent,
+    ReviewClientComponent,
+    EditReviewComponent,
   ],
   imports: [
     CommonModule,
