@@ -32,7 +32,7 @@ export class PerfomancesService {
     price: string,
     category: string
   ): Observable<ResponseService> {
-    const filterPrice = price != '' ? `direction=${price}` : '';
+    const filterPrice = price != '' ? `direction=${price}&orderBy=price` : '';
     const filterCategory = category != '' ? `category=${category}` : '';
     return this.http.get<ResponseService>(
       `${this.performanceBaseUrl}/filter?${filterPrice}&${filterCategory}`
