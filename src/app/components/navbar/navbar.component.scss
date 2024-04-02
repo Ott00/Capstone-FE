@@ -24,5 +24,10 @@
     i {
       color: var(--secondary-color);
     }
+
+    &:hover {
+      background-color: var(--text-color);
+      color: white;
+    }
   }
 }

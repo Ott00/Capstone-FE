@@ -48,7 +48,12 @@
             </a>
           </div>
           <div class="me-3">
-            <a class="nav-link" [routerLink]="['/reserved']">
+            <a
+              *ngIf="userLoggedIn"
+              class="nav-link"
+              [routerLink]="['/reserved']"
+              routerLinkActive="active"
+            >
               Area Riservata
             </a>
           </div>
